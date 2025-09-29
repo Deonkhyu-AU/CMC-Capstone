@@ -42,7 +42,7 @@ export default function LoginScreen() { // Changed component name to LoginScreen
                 router.replace("/pin");
             } else {
                 // Existing user without PIN
-                router.replace("/(tabs)/home");
+                router.replace("/(drawer)/(tabs)/home");
             }
         } else {
             setMessage(result as string);

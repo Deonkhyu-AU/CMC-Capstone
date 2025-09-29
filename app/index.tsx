@@ -8,6 +8,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export default function HomeScreen() {
+  console.log("🚀 Index.tsx mounted");
 
   const [ipAddress, setIpAddress] = useState(null);
   const [isInAustralia, setInAustralia] = useState(null);
@@ -54,7 +55,7 @@ export default function HomeScreen() {
       const userCredentials = await fetchUser();
 
       if (!userCredentials) {
-        router.replace("/login");
+        router.replace("/(auth)/login");
         return;
       }
 
@@ -66,12 +67,12 @@ export default function HomeScreen() {
           console.log("User signed in:", user.user.email);
           router.replace("/(drawer)");
         } else {
-          router.replace("/login");
+          router.replace("/(auth)/login");
         }
       }
     } catch (error) {
       console.error("Error during user initialization:", error.message);
-      router.replace("/login");
+      router.replace("/(auth)/login");
     }
   };
 

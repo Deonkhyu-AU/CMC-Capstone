@@ -3,6 +3,7 @@ import { Drawer } from 'expo-router/drawer';
 import Feather from '@expo/vector-icons/Feather';
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase/initiliaze';
+import { router } from 'expo-router';
 
 export default function DrawerLayout() {
     const [userType, setUserType] = useState<string | null>(null);
@@ -12,6 +13,10 @@ export default function DrawerLayout() {
         async function fetchUserType() {
             try {
                 const { data: { session } } = await supabase.auth.getSession();
+                if (!session?.user) {
+                    router.replace("/(auth)/login");
+                    return;
+                }
                 if (session?.user?.email) {
                     const { data: userData } = await supabase
                         .from("users")
