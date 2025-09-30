@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { View, Text, Image, TouchableOpacity, Alert, ScrollView, ActivityIndicator } from "react-native";
 import { supabase } from "@/lib/supabase/initiliaze";
+import CustomHeader from "@/components/CustomHeader";
 
 // Add these debugging utilities at the top
 const DEBUG = false; // Set to false in production
@@ -885,9 +886,12 @@ function CyberMatchScreen() {
   return (
     <ScrollView style={{ flex: 1, backgroundColor: '#F9FAFB' }} contentContainerStyle={{ paddingVertical: 20 }}>
       <View style={{ paddingHorizontal: 16 }}>
+
+        <CustomHeader />
+
         {!matching ? (
           <View style={{ alignItems: 'center' }}>
-            <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#1D4ED8', marginBottom: 8, textAlign: 'center' }}>
+            <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#1D4ED8', marginBottom: 8, textAlign: 'center', marginTop: 8 }}>
               Find Your Cybersecurity Mentor
             </Text>
             
@@ -932,7 +936,7 @@ function CyberMatchScreen() {
                     {currentMentee.skills.map((skill, index) => (
                       <Text
                         key={`${skill}-${index}`}
-                        style={{ backgroundColor: '#DBEAFE', color: '#1E40AF', paddingHorizontal: 12, paddingVertical: 4, borderRadius: 9999, fontSize: 14, fontWeight: '500', margin: 4 }}
+                        style={{ backgroundColor: '#DBEAFE', color: '#1E40AF', paddingHorizontal: 12, paddingVertical: 2, borderRadius: 9999, fontSize: 16, fontWeight: '500', margin: 4 }}
                       >
                         {skill}
                       </Text>
@@ -950,7 +954,7 @@ function CyberMatchScreen() {
                     {currentMentee.target_roles.map((role, index) => (
                       <Text
                         key={`${role}-${index}`}
-                        style={{ backgroundColor: '#D1FAE5', color: '#065F46', paddingHorizontal: 12, paddingVertical: 4, borderRadius: 9999, fontSize: 14, fontWeight: '500', margin: 4 }}
+                        style={{ backgroundColor: '#D1FAE5', color: '#065F46', paddingHorizontal: 12, paddingVertical: 4, borderRadius: 9999, fontSize: 16, fontWeight: '500', margin: 4 }}
                       >
                         {role}
                       </Text>

@@ -42,7 +42,7 @@ export default function CustomHeader() {
     const navigation = useNavigation();
 
     return (
-        <View className="h-16 px-4 bg-transparent flex-row items-center">
+        <View className="h-16 px-4 pt-10 bg-transparent flex-row items-center">
             <TouchableOpacity className="flex-row items-center"
                               onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
                 <Feather className="mr-2" name="menu" size={21} color="black" />
