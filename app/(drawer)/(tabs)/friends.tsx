@@ -254,15 +254,28 @@ export default function Friends() {
     }
   }
 
-  //  Show block/unblock menu dynamically
-  function showBlockMenu(friend: Friend) {
+  //  Show dropdown menu with Block/Unblock and Write Testimonial
+  function showActionMenu(friend: Friend) {
     const isBlockedByMe = blockedByMe.includes(friend.auth_id);
     Alert.alert(
       friend.name,
-      isBlockedByMe ? "Do you want to unblock this user?" : "Do you want to block this user?",
+      "Choose an action.",
       [
         { text: "Cancel", style: "cancel" },
-        { text: isBlockedByMe ? "Unblock" : "Block", onPress: () => toggleBlock(friend) },
+        {
+          text: "Write Testimonial",
+          onPress: () => {
+            router.push({
+              pathname: "../../writeTestimonials",
+              params: { userId: friend.id, userName: friend.name },
+            });
+          },
+        },
+        {
+          text: isBlockedByMe ? "Unblock User" : "Block User",
+          onPress: () => toggleBlock(friend),
+          style: "destructive",
+        },
       ]
     );
   }
@@ -306,7 +319,7 @@ export default function Friends() {
                 </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => showBlockMenu(friend)} style={{ padding: 8 }}>
+            <TouchableOpacity onPress={() => showActionMenu(friend)} style={{ padding: 8 }}>
               <Text style={{ fontSize: 20 }}>⋮</Text>
             </TouchableOpacity>
           </View>

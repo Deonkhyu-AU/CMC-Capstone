@@ -93,8 +93,8 @@ function RootLayout() {
             name="updateProfile"
             options={{ title: "Update Profile" }}
           />
-
           <Stack.Screen name="chat" options={{ title: "Chat Match" }} />
+          <Stack.Screen name="writeTestimonials" options={{ title: "Write Testimonials" }} />
         </Stack>
       </MenuProvider>
     </GestureHandlerRootView>
